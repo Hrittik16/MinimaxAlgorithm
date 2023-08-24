@@ -3,7 +3,7 @@ import os
 class Board:
     def __init__(self):
         self.board = ["." for i in range(9)]
-        self.currentPlayerMove = 0   # 0 -> Human, 1 -> AI
+        self.currentPlayerMove = 0   # 0 -> X, 1 -> O
 
     def printBoard(self):
         os.system("cls")

@@ -1,20 +1,21 @@
 * class Board:
 	- def __init__(self):
-		- initialize an empty board as a 2D list
-		- currentPlayerMove = 0 (player playing with X)
-	- currentBoardState()
-		- tracks moves made by players
+		- initialize an empty board as a list
+		- currentPlayerMove = 0 (X -> 0 and O -> 1)
 	- printBoard()
 		- clear the screen and print the current state of the board
-	- checkValidMove()
+	- validMove()
+		- checks if a move is possible
 	- playerInput()
-		- keeps track of which players move it is
 		- takes moves from players
 		- checkValidMove()
 		- insert the move into the board
 		- printBoard()
-	- checkStatus()
-		- win *2
-		- loss *2
-		- draw *2
+	- status()
+		- check if X wins
+		- check if O wins
+		- check if there is a draw
+		- other wise return 100
+	- declareResult()
+		- once the status is win or draw we can print the result
 

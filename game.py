@@ -115,8 +115,9 @@ class Board:
         return 1
 
 
-
-if __name__ == "__main__":
+# This if statement is only executed when the program is run directly by the python interpreter.
+# If the file is imported as a module then it won't be executed.
+if __name__ == "__main__": 
     B = Board()
     while(True): # Nothing = 100, X Win = 1, Draw = 0, O Wins = -1
         B.printBoard()

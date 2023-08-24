@@ -1,6 +1,7 @@
 * class Board:
 	- def __init__(self):
 		- initialize an empty board as a 2D list
+		- currentPlayerMove = 0 (player playing with X)
 	- currentBoardState()
 		- tracks moves made by players
 	- printBoard()

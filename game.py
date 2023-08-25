@@ -48,47 +48,31 @@ class Board:
 
 
     def status(self):
-        # check if X or O wins
-        if self.board[0] == self.board[1] and self.board[1] == self.board[2]:
-            if self.board[0] == "X":
+        # check rows
+        for i in range(3): # all() returns True if all elements of an iterable are true
+            if all([self.board[3*i+j] == "X" for j in range(3)]):
                 return 1
-            elif self.board[0] == "O":
+        for i in range(3):
+            if all([self.board[3*i+j] == "O" for j in range(3)]):
                 return -1
-        elif self.board[3] == self.board[4] and self.board[4] == self.board[5]:
-            if self.board[3] == "X":
+
+        # check columns
+        for j in range(3):
+            if all([self.board[3*i+j] == "X" for i in range(3)]):
                 return 1
-            elif self.board[3] == "O":
+        for j in range(3):
+            if all([self.board[3*i+j] == "O" for i in range(3)]):
                 return -1
-        elif self.board[6] == self.board[7] and self.board[7] == self.board[8]:
-            if self.board[6] == "X":
-                return 1
-            elif self.board[6] == "O":
-                return -1
-        elif self.board[0] == self.board[3] and self.board[3] == self.board[6]:
-            if self.board[0] == "X":
-                return 1
-            elif self.board[0] == "O":
-                return -1
-        elif self.board[1] == self.board[4] and self.board[4] == self.board[7]:
-            if self.board[1] == "X":
-                return 1
-            elif self.board[1] == "O":
-                return -1
-        elif self.board[2] == self.board[5] and self.board[5] == self.board[8]:
-            if self.board[2] == "X":
-                return 1
-            elif self.board[2] == "O":
-                return -1
-        elif self.board[0] == self.board[4] and self.board[4] == self.board[8]:
-            if self.board[0] == "X": 
-                return 1
-            elif self.board[0] == "O":
-                return -1
-        elif self.board[2] == self.board[4] and self.board[4] == self.board[6]:
-            if self.board[2] == "X":
-                return 1
-            elif self.board[2] == "O":
-                return -1
+
+        # check diagonals
+        if all([self.board[3*i+i] == "X" for i in range(3)]):
+            return 1
+        elif all([self.board[3*i+i] == "O" for i in range(3)]):
+            return -1
+        if all([self.board[3*(i+1)-(i+1)] == "X" for i in range(3)]):
+            return 1
+        elif all([self.board[3*(i+1)-(i+1)] == "O" for i in range(3)]):
+            return -1
 
 
         # check if there is a draw

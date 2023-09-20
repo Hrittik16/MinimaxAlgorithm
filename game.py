@@ -90,10 +90,13 @@ class Board:
         if val == 100:
             return 0
         elif val == 0:
+            self.printBoard()
             print("\nThe game ended in a draw!!\n")
         elif val == 1:
+            self.printBoard()
             print("\nX has won the game\n")
         elif val == -1:
+            self.printBoard()
             print("\nO has won the game")
         
         return 1

@@ -1,4 +1,5 @@
 import os
+import re
 
 class Board:
     def __init__(self):
@@ -13,39 +14,25 @@ class Board:
                 print(self.board[3*i+j]+" "*3, end="")
             print("\n")
 
-    def validMove(self, index):
-        if index.isdigit() == 0:
+    def validMove(self, x, y):
+        if not re.fullmatch(r"[0-9]+", x) or not re.fullmatch(r"[0-9]+", y):
             return 0
-        if int(index) < 1 or int(index) > 9:
-            return 0
-        return self.board[int(index)-1] == "."
+        return self.board[((int(x)-1)*3+(int(y)-1))] == "."
 
     def playerInput(self):
-        if self.currentPlayerMove == 0:
-            invalidIndex = 0
-            while invalidIndex == 0:
-                print("Enter an index for placing X. Indexes are 1-9: ")
-                index = input()
-                if(self.validMove(index) == 1):
-                    self.board[int(index)-1] = "X"
-                    invalidIndex = 1
-                else:
-                    self.printBoard()
-                    print("You have entered an invalid index. Try again")
-            self.currentPlayerMove = 1
+        if(self.currentPlayerMove == 0): print("X make your move: ")
+        else: print("O make your move: ")
+        x, y = input().split()
+        if self.validMove(x, y):
+            if self.currentPlayerMove == 0:
+                self.board[(int(x)-1)*3+(int(y)-1)] = 'X'
+                self.currentPlayerMove = 1
+            else:
+                self.board[(int(x)-1)*3+(int(y)-1)] = 'O'
+                self.currentPlayerMove = 0
         else:
-            invalidIndex = 0
-            while invalidIndex == 0:
-                print("Enter an index for placing O. Indexes are 1-9: ")
-                index = input()
-                if(self.validMove(index) == 1):
-                    self.board[int(index)-1] = "O"
-                    invalidIndex = 1
-                else:
-                    self.printBoard()
-                    print("You have entered a wrong index. Try again")
-            self.currentPlayerMove = 0
-
+            print("Invalid Input! Try Again\n")
+            self.playerInput()
 
     def status(self):
         # check rows

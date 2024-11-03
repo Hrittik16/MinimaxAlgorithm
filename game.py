@@ -6,6 +6,14 @@ class Board:
         self.board = ["." for i in range(9)]
         self.currentPlayerMove = 0   # 0 -> X, 1 -> O
 
+    def start_game(self):
+        while(True): # Nothing = 100, X Win = 1, Draw = 0, O Wins = -1
+            self.printBoard()
+            self.playerInput()
+            val = self.status()
+            if self.declareResult(val) == 1:
+                break
+
     def printBoard(self):
         os.system("cls")
         print("\n")
@@ -93,11 +101,5 @@ class Board:
 # If the file is imported as a module then it won't be executed.
 if __name__ == "__main__": 
     B = Board()
-    while(True): # Nothing = 100, X Win = 1, Draw = 0, O Wins = -1
-        B.printBoard()
-        B.playerInput()
-        val = B.status()
-        if B.declareResult(val) == 1:
-            break
-
+    B.start_game()
 
